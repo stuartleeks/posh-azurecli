@@ -20,3 +20,15 @@ To install these interim drops use:
 ```
     choco install posh-azurecli -source 'https://www.myget.org/F/posh-azurecli/api/v2' -pre
 ```
+
+## Release Notes
+
+### 0.1.2 
+Released to non-milestone feed: 14th August 2015
+* Provide command completion for initial command
+* Sort command completion results
+* Add caching of parsed command metadata
+ 
+### 0.1.1
+Released to non-milestone feed: 14th August 2015
+* Basic functionality
