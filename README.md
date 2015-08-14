@@ -8,17 +8,17 @@ Inspired by [posh-git](https://github.com/dahlbyk/posh-git)
 Ensure that you have [chocolatey](https://chocolatey.org/) installed.
 
 
-To install milestone drops (note these are still 'pre-release'):
-
+To install milestone drops:
+N.B - waiting on chocolatey moderation (2015-08-14)
 ```
-    choco install posh-azurecli -pre
+    choco install posh-azurecli
 ```
 
 There is also a [non-milestone feed](https://www.myget.org/F/posh-azurecli/api/v2) now up on MyGet. 
 To install these interim drops use:
 
 ```
-    choco install posh-azurecli -source 'https://www.myget.org/F/posh-azurecli/api/v2' -pre
+    choco install posh-azurecli -source 'https://www.myget.org/F/posh-azurecli/api/v2'
 ```
 
 ## Release Notes
