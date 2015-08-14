@@ -42,7 +42,7 @@ function AzureCliExpansion($line) {
 	# run out argument while have a valid category?
 	if ($currentCategory -ne $null) {
 		#return sub categories and command combind
-		return $allSubCategoriesAndCommands
+		return $allSubCategoriesAndCommands | sort
 	}
 	
 	if ($currentCommand -ne $null) {
@@ -53,9 +53,9 @@ function AzureCliExpansion($line) {
 	# we are at the last arg, try match both categories and commands
 	if ($index -eq $args.Length -1) {
 		if ($currentCommand -ne $null) {
-			return $allCommandOptions
+			return $allCommandOptions | sort
 		} else {
-			return $allSubCategoriesAndCommands | ?{ $_.StartsWith($arg) }
+			return $allSubCategoriesAndCommands | ?{ $_.StartsWith($arg) } | sort
 		}
 	}
 	
@@ -68,9 +68,10 @@ function AzureCliExpansion($line) {
 			# return this.reply(fs.readdirSync(process.cwd()));
 			# Default PS behaviour is to complete files :-)
 		} else {
-			return $allCommandOptions | ?{ $_.StartsWith($lastArg) }
+			return $allCommandOptions | ?{ $_.StartsWith($lastArg) } | sort
 		}
 	}
+    return $allSubCategoriesAndCommands | sort
 }
 
 
