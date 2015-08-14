@@ -4,6 +4,9 @@
 $installPath = Split-Path $MyInvocation.MyCommand.Path
 . "$installPath\utils.ps1"
 
+$global:_CLI_MODE=$null;
+$global:_CLI_DATA=$null;
+
 function AzureCliExpansion($line) {
 	# TODO - error handling (e.g. azure.cmd not found, plugins.xxx.json not found)
 	
@@ -13,11 +16,18 @@ function AzureCliExpansion($line) {
 	# Based on https://github.com/Azure/azure-xplat-cli/blob/90a20ee00e0741a5ec8cece69bf5e18bf1e0ecda/lib/util/utilsCore.js#L77
 	$config = Get-Content "~/.azure/config.json" | ConvertFrom-Json
 	$mode = $config.mode
-	
-	# Based on https://github.com/Azure/azure-xplat-cli/blob/90a20ee00e0741a5ec8cece69bf5e18bf1e0ecda/lib/autocomplete.js#L26
-	$datafile = "$azurecliLibPath/plugins.$mode.json"
-	$plugins = Get-Content $datafile | ConvertFrom-Json
-	
+
+    if ( ($global:_CLI_MODE -eq $mode) -and ($global:_CLI_DATA -ne $null)) 	{
+        $plugins = $global:_CLI_DATA
+    } else {
+	    # Based on https://github.com/Azure/azure-xplat-cli/blob/90a20ee00e0741a5ec8cece69bf5e18bf1e0ecda/lib/autocomplete.js#L26
+	    $datafile = "$azurecliLibPath/plugins.$mode.json"
+	    $plugins = Get-Content $datafile | ConvertFrom-Json
+
+        $global:_CLI_MODE = $mode
+        $global:_CLI_DATA = $plugins
+	}
+a
 	# Based on https://github.com/Azure/azure-xplat-cli/blob/90a20ee00e0741a5ec8cece69bf5e18bf1e0ecda/lib/autocomplete.js#L49
 	$args = $line.Split(' ') | ?{ $_ -ne ''} | %{ $_.Trim() }
 	
