@@ -5,7 +5,7 @@ Inspired by [posh-git](https://github.com/dahlbyk/posh-git)
 
 
 ## Installation etc
-Ensure that you have [chocoloatey](https://chocolatey.org/) installed.
+Ensure that you have [chocolatey](https://chocolatey.org/) installed.
 
 
 To install milestone drops (note these are still 'pre-release'):
