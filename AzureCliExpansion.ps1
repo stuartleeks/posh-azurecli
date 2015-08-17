@@ -27,7 +27,7 @@ function AzureCliExpansion($line) {
         $global:_CLI_MODE = $mode
         $global:_CLI_DATA = $plugins
 	}
-a
+
 	# Based on https://github.com/Azure/azure-xplat-cli/blob/90a20ee00e0741a5ec8cece69bf5e18bf1e0ecda/lib/autocomplete.js#L49
 	$args = $line.Split(' ') | ?{ $_ -ne ''} | %{ $_.Trim() }
 	
