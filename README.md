@@ -3,6 +3,7 @@ Provides tab completion for [azure cli](https://azure.microsoft.com/en-us/docume
 
 Inspired by [posh-git](https://github.com/dahlbyk/posh-git)
 
+PLEASE NOTE: This is NOT a supported extension to Azure CLI!
 
 ## Installation etc
 Ensure that you have [chocolatey](https://chocolatey.org/) installed.
