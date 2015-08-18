@@ -24,6 +24,11 @@ To install these interim drops use:
 
 ## Release Notes
 
+## 0.1.4
+Released to non-milestone feed 18th August 2016
+* Add a version check on Azure CLI in chocolatey install (requires >= 0.9.7)
+* Update path to license file in nuspec
+
 ### 0.1.3
 Released to non-milestone feed 18th August 2015
 * Update to utility function to handle PATH strings with empty segments

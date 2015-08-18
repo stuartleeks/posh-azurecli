@@ -45,6 +45,25 @@ if ($libPath -eq $null){
     return
 }
 
+# Check CLI version
+$output = azure
+$output | %{ 
+    if ($_ -match "Tool version (\d)\.(\d)\.(\d)") {
+        $version = $matches
+    }
+}
+if ($version -eq $null) {
+    Write-Error "Failed to determine CLI version"
+    return
+}
+$supportedVersion = ($version[1] -gt 0 -or $version[2] -gt 9 -or $version[3] -ge 7) 
+if (-not $supportedVersion) {
+    Write-Error "You must have version 0.9.7 of Azure CLI or later"
+    return
+}
+
+
+
 # generate plugins.xxx.json
 # Initially made this conditional, but this approach at least ensure that the files are up-to-date on posh-azurecli installation!
 # TODO look at adding detection when these are stale (when cli is updated) and triggering regeneration
@@ -63,3 +82,6 @@ Write-Host "Add posh-azurecli to profile"
 Import-Module posh-azurecli
 
 "@ | Out-File $PROFILE -Append -Encoding (Get-FileEncoding $PROFILE)
+
+Write-Host "Import posh-azurecli into current session"
+Import-Module posh-azurecli # bring completion into the current session ;-)
