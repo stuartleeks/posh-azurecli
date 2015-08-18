@@ -23,6 +23,10 @@ To install these interim drops use:
 
 ## Release Notes
 
+### 0.1.3
+Released to non-milestone feed 18th August 2015
+* Update to utility function to handle PATH strings with empty segments
+
 ### 0.1.2 
 Released to non-milestone feed: 14th August 2015
 * Provide command completion for initial command

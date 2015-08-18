@@ -5,7 +5,7 @@ function FindInPath() # http://blogs.msdn.com/b/stuartleeks/archive/2015/07/02/f
         [string] $filename 
     )
     
-    $matches = $env:Path.Split(';') | %{ join-path $_ $filename} | ?{ test-path $_ }
+    $matches = $env:Path.Split(';') | ?{$_ -ne ''} | %{ join-path $_ $filename} | ?{ test-path $_ }
     
     if ($matches.Length -eq 0){ 
         $null
