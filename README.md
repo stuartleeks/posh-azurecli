@@ -9,11 +9,7 @@ PLEASE NOTE: This is NOT a supported extension to Azure CLI!
 Ensure that you have [chocolatey](https://chocolatey.org/) installed.
 
 
-To install milestone drops:
-N.B - waiting on chocolatey moderation (2015-08-14)
-```
-    choco install posh-azurecli
-```
+Milestone drops are waiting on chocolatey moderation. I'll update this page once available :-)
 
 There is also a [non-milestone feed](https://www.myget.org/F/posh-azurecli/api/v2) now up on MyGet. 
 To install these interim drops use:
