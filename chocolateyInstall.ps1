@@ -82,6 +82,3 @@ Write-Host "Add posh-azurecli to profile"
 Import-Module posh-azurecli
 
 "@ | Out-File $PROFILE -Append -Encoding (Get-FileEncoding $PROFILE)
-
-Write-Host "Import posh-azurecli into current session"
-Import-Module posh-azurecli # bring completion into the current session ;-)

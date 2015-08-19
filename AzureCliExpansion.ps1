@@ -9,6 +9,7 @@ $global:_CLI_DATA=$null;
 
 function AzureCliExpansion($line) {
 	# TODO - error handling (e.g. azure.cmd not found, plugins.xxx.json not found)
+	DebugMessage "autocomplete: $line"
 	
 	$azureCmdPath = GetAzureCmdPath
 	$azurecliLibPath = GetAzureLibPath
@@ -16,6 +17,8 @@ function AzureCliExpansion($line) {
 	# Based on https://github.com/Azure/azure-xplat-cli/blob/90a20ee00e0741a5ec8cece69bf5e18bf1e0ecda/lib/util/utilsCore.js#L77
 	$config = Get-Content "~/.azure/config.json" | ConvertFrom-Json
 	$mode = $config.mode
+
+	DebugMessage "\tmode: $mode"
 
     if ( ($global:_CLI_MODE -eq $mode) -and ($global:_CLI_DATA -ne $null)) 	{
         $plugins = $global:_CLI_DATA
@@ -51,6 +54,7 @@ function AzureCliExpansion($line) {
 	
 	# run out argument while have a valid category?
 	if ($currentCategory -ne $null) {
+		DebugMessage "\treturn all categories/commands (no category)"
 		#return sub categories and command combind
 		return $allSubCategoriesAndCommands | sort
 	}
@@ -63,8 +67,10 @@ function AzureCliExpansion($line) {
 	# we are at the last arg, try match both categories and commands
 	if ($index -eq $args.Length -1) {
 		if ($currentCommand -ne $null) {
+			DebugMessage "\treturn all commands"
 			return $allCommandOptions | sort
 		} else {
+			DebugMessage "\treturn matches on prefix: $arg"
 			return $allSubCategoriesAndCommands | ?{ $_.StartsWith($arg) } | sort
 		}
 	}
@@ -77,21 +83,29 @@ function AzureCliExpansion($line) {
 		if ($option -ne $null) {
 			# return this.reply(fs.readdirSync(process.cwd()));
 			# Default PS behaviour is to complete files :-)
+			DebugMessage "\treturn to allow default PowerShell file matching"
+			return
 		} else {
+			DebugMessage "\treturn matches on lastArg: $lastArg"
 			return $allCommandOptions | ?{ $_.StartsWith($lastArg) } | sort
 		}
 	}
+	
+	DebugMessage "\treturn all categories/commands"
     return $allSubCategoriesAndCommands | sort
 }
 
 
 # TODO - look at posh-git/posh-hg to link with powertab
+DebugMessage "Installing..."
 if(-not (Test-Path Function:\AzureCliTabExpansionBackup)){
 
     if (Test-Path Function:\TabExpansion) {
+		DebugMessage "\tbackup previous TabExpansion"
         Rename-Item Function:\TabExpansion AzureCliTabExpansionBackup
     }
 
+	DebugMessage "\tInstalling TabExpansion hook"
     function TabExpansion($line, $lastWord) {
        $lastBlock = [regex]::Split($line, '[|;]')[-1].TrimStart()
 

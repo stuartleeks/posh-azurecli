@@ -17,7 +17,7 @@ function FindInPath() # http://blogs.msdn.com/b/stuartleeks/archive/2015/07/02/f
 function Coalesce($a, $b) { if ($a -ne $null) { $a } else { $b } }
 
 function GetAzureCmdPath() {
-    FindInPath "azure.cmd"
+    FindInPath "azure.cmd" | Select -First 1
 }
 function GetAzureLibPath(){
 	$azureCmdPath = GetAzureCmdPath
@@ -26,6 +26,12 @@ function GetAzureLibPath(){
 		$azurecliLibPath = $azureCmdPath | Split-Path | Join-Path -ChildPath "..\lib"
 	}
     if(Test-Path $azurecliLibPath) {
-        $azurecliLibPath
+        return $azurecliLibPath
+    }
+}
+
+function DebugMessage($message){
+    if($env:POSH_AZURECLI_DEBUG -eq 1){
+        [System.Diagnostics.Debug]::WriteLine("PoshAzureCli:$message")
     }
 }

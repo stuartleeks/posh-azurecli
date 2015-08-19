@@ -20,6 +20,10 @@ To install these interim drops use:
 
 ## Release Notes
 
+## 0.1.5
+* Add handling to use the first path for Azure CLI installation
+* Add debug output (POSH_AZURECLI_DEBUG flag)
+
 ## 0.1.4
 Released to non-milestone feed 18th August 2016
 * Add a version check on Azure CLI in chocolatey install (requires >= 0.9.7)
