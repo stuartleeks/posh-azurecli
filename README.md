@@ -21,6 +21,7 @@ To install these interim drops use:
 ## Release Notes
 
 ## 0.1.5
+Released to non-milestone feed 19th August 2016
 * Add handling to use the first path for Azure CLI installation
 * Add debug output (POSH_AZURECLI_DEBUG flag)
 
