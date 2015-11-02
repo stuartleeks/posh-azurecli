@@ -48,7 +48,7 @@ if ($libPath -eq $null){
 # Check CLI version
 $output = azure
 $output | %{ 
-    if ($_ -match "Tool version (\d)\.(\d)\.(\d)") {
+    if ($_ -match "Tool version (\d*)\.(\d*)\.(\d*)") {
         $version = $matches
     }
 }
@@ -56,7 +56,14 @@ if ($version -eq $null) {
     Write-Error "Failed to determine CLI version"
     return
 }
-$supportedVersion = ($version[1] -gt 0 -or $version[2] -gt 9 -or $version[3] -ge 7) 
+$major = [int] $version[1]
+$minor = [int] $version[2]
+$patch = [int] $version[3]
+$supportedVersion = ( 
+                        ($major -gt 0) `
+                        -or ($major -eq 0 -and $minor -gt 9) `
+                        -or ($major -eq 0 -and $minor -eq 9 -and $patch -ge 7) `
+                    ) 
 if (-not $supportedVersion) {
     Write-Error "You must have version 0.9.7 of Azure CLI or later"
     return
