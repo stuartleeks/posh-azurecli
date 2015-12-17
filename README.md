@@ -21,8 +21,8 @@ To install these interim drops use:
 ## Release Notes
 
 ## 0.1.7
-Release??
-* Add Reset-AzureCliCompletion cmdlet. This helps towards PowerShell Gallery listing.
+Released to non-milesteon feed 17th December
+* Add Reset-AzureCliCompletion cmdlet to regenerate CLI metadata for completion. This helps towards PowerShell Gallery listing.
 
 ## 0.1.6
 Released to non-milestone feed 2nd November 2015
