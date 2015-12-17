@@ -5,7 +5,33 @@ Inspired by [posh-git](https://github.com/dahlbyk/posh-git)
 
 PLEASE NOTE: This is NOT a supported extension to Azure CLI!
 
+![demo](posh-azurecli.gif)
+
 ## Installation etc
+
+### PowerShell Gallery
+
+You can install [posh-azurecli](https://www.powershellgallery.com/packages/posh-azurecli/) via the [PowerShell Gallery](https://www.powershellgallery.com/)
+
+```powershell
+Install-Module -Name posh-azurecli
+Install-AzureCliCompletion
+```
+
+If you update the CLI version then run the following to regenerate the metadata for completion
+```powershell
+Reset-AzureCliCompletion
+```
+
+And to uninstall run
+```powershell
+Uninstall-AzureCliCompletion
+Remove-Module posh-azurecli
+Uninstall-Module -Name posh-azurecli
+```
+
+### Chocolatey
+
 Ensure that you have [chocolatey](https://chocolatey.org/) installed.
 
 
