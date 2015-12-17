@@ -7,6 +7,4 @@ if(Test-Path $targetPath){
     Remove-Item -Path $targetPath -Recurse -Force
 }
 
-# remove profile entry
-$newprofile = Get-Content $PROFILE | ?{-not $_.Contains("posh-azurecli") }
-$newprofile | Set-Content $PROFILE
+Uninstall-AzureCliCompletion

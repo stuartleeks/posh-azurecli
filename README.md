@@ -20,8 +20,13 @@ To install these interim drops use:
 
 ## Release Notes
 
+## 0.1.8
+Released to non-milestone feed 17th December.
+Released to PowerShell Gallery 17th December.
+* Add Install-AzureCliCompletion, Uninstall-AzureCliCompletion
+
 ## 0.1.7
-Released to non-milesteon feed 17th December
+Released to non-milestone feed 17th December
 * Add Reset-AzureCliCompletion cmdlet to regenerate CLI metadata for completion. This helps towards PowerShell Gallery listing.
 
 ## 0.1.6
