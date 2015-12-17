@@ -20,6 +20,11 @@ To install these interim drops use:
 
 ## Release Notes
 
+## 0.1.9
+Released to non-milestone feed 17th December.
+Released to PowerShell Gallery 17th December.
+* Update Install-AzureCliCompletion to trigger Reset-AzureCliCompletion to simplify installation
+
 ## 0.1.8
 Released to non-milestone feed 17th December.
 Released to PowerShell Gallery 17th December.

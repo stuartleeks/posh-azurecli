@@ -29,7 +29,10 @@ function GetAzureLibPath(){
         return $azurecliLibPath
     }
 }
-function Install-AzureCliCompletion(){
+function Install-AzureCliCompletion([switch] $SkipReset){
+    if (-not $SkipReset){
+        Reset-AzureCliCompletion
+    }
     if(-not (Test-Path $PROFILE))
     {
         Write-Host "Creating profile: $PROFILE"

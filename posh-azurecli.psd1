@@ -12,7 +12,7 @@
 RootModule = 'posh-azurecli'
 
 # Version number of this module.
-ModuleVersion = '0.1.8'
+ModuleVersion = '0.1.9'
 
 # ID used to uniquely identify this module
 GUID = '32d6509c-7906-42cf-b20e-cc8c977e8d11'

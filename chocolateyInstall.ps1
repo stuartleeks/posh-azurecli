@@ -14,6 +14,4 @@ Copy-Item "$sourcePath\*" $targetPath | out-null
 $installPath = Split-Path $MyInvocation.MyCommand.Path
 . "$installPath\utils.ps1"
 
-Reset-AzureCliCompletion
-
 Install-AzureCliCompletion
