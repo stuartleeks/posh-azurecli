@@ -1,4 +1,8 @@
 # posh-azurecli
+
+**PLEASE NOTE: This module targetted the v1 Azure CLI (`azure`) and does not work with the v2 CLI (`az`)**
+**As such, this repo is now read-only and no longer maintained**
+
 Provides tab completion for [azure cli](https://azure.microsoft.com/en-us/documentation/articles/xplat-cli/) commands in PowerShell
 
 Inspired by [posh-git](https://github.com/dahlbyk/posh-git)
